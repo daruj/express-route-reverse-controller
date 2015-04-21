@@ -1,0 +1,27 @@
+{
+  "name": "express-route-reverse-controller",
+  "version": "0.0.1",
+  "description": "A helper function to assign controller actions to routes in express and retrieve them from the views by using reverse controller",
+  "main": "index.js",
+  "dependencies": {
+    "ctrlr": "~0.2.1",
+    "express-reverse": "~0.3.1"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "express",
+    "route",
+    "routes",
+    "controller",
+    "controllers",
+    "routing",
+    "reverse-controller",
+    "action"
+  ],
+  "author": {
+    "name": "Damian Aruj",
+    "email": "aruj.damian@gmail.com"
+  },
+  "license": "MIT",
+  "readmeFilename": "README.md"
+}
