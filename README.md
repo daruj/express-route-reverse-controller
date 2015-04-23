@@ -40,10 +40,10 @@ var errc = require('express-route-reverse-controller');
 // set up express route control:
 errc(app, {
     controllers: __dirname + '/controllers',
-    routes: {
-        '/fetch_users': { name: 'fetch_users', action: 'usersController#fetch', method: 'get' },
-        '/save_users': { name: 'save_users', action: 'usersController#save', method: 'post' },
-        '/get_user/:id': { name: 'get_user, action: 'usersController#get', method: 'get' }
+    endpoints: {
+        'fetch_users': { path: '/fetch_users', method: 'get', action: 'usersController#fetch'},
+        'save_users': { path: '/save_users', method: 'post', action: 'usersController#save'},
+        'get_user': { path: '/get_user/:id', method: 'get', action: 'usersController#get'}
     }
 });
 
@@ -53,9 +53,9 @@ app.listen(3000);
 You can make this even more easier, by defining your routes in a `routes.json` file, like so:
 ```json
 {
-    "/fetch_users": { name: 'fetch_users', action: 'usersController#fetch', method: 'get' },
-    "/save_users": { name: 'save_users', action: 'usersController#save', method: 'post' },
-    "/get_user/:id": { name: 'get_user, action: 'usersController#get', method: 'get' }
+    'fetch_users': { path: '/fetch_users', method: 'get', action: 'usersController#fetch'},
+    'save_users': { path: '/save_users', method: 'post', action: 'usersController#save'},
+    'get_user': { path: '/get_user/:id', method: 'get', action: 'usersController#get'}
 }
 ```
 
@@ -66,7 +66,7 @@ And loading the routes is as simple as:
 
 errc(app, {
     controllers: __dirname + '/controllers',
-    routes: require('routes.json')
+    endpoints: require('routes.json')
 });
 
 ...

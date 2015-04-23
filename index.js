@@ -5,7 +5,7 @@ module.exports = function(expressApp, config) {
 
     require('express-reverse')(expressApp);
 
-    if (typeof config.routes !== 'object') {
+    if (typeof config.endpoints !== 'object') {
         throw new Error('config.routes must be set to a valid route object map');
     }
 
@@ -14,19 +14,14 @@ module.exports = function(expressApp, config) {
     }
 
     var controllers = ctrlr(config.controllers);
-    for (var route in config.routes) {
-        var meta = config.routes[route];
+    for (var endpoint in config.endpoints) {
+        var meta = config.endpoints[endpoint];
 
-        if (typeof meta === 'string') {
-            meta = { action: meta };
-        }
-
-        var name   = meta.name || '';
         var method = (meta.method || 'get').toLowerCase();
         var action = controllers(meta.action);
+        var route = meta.path;
 
-
-        expressApp[method](name, route, action);
+        expressApp[method](endpoint, route, action);
     }
 };
 
