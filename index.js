@@ -38,7 +38,7 @@ module.exports = function (expressApp, config) {
     var action = controllers(meta.action);
     var route = meta.path;
     var routeMiddlewares = meta.middlewares || [];
-    var middlewares = [mw.log];
+    var middlewares = [mw.log, mw.getUser];
 
     if (routeMiddlewares.length) {
       routeMiddlewares.forEach(function (middleware) {
@@ -48,5 +48,6 @@ module.exports = function (expressApp, config) {
     expressApp[method](endpoint, route, middlewares, action);
   }
 };
+
 
 
